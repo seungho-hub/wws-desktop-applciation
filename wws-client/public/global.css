@@ -1,0 +1,31 @@
+:root{
+	--sig : #FFCA36;
+	--bg : 	#161728;
+	--bg-sideBar : #23263D;
+	--bg-topBar : #4552b4;
+	--font-white : #DDDDDD;
+	--font-black : #161728;
+}
+
+*{
+	box-sizing: border-box;
+}
+
+body{
+	width : 100vw;
+	height : 100vh;
+	margin : 0;
+	padding : 0;
+	opacity: 1;
+	border-radius: 30px;
+    overflow: hidden;
+}
+
+button{
+	border : none;
+	box-shadow : none;
+}
+
+button:hover{
+	cursor: pointer;
+}
