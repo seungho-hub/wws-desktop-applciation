@@ -1,5 +1,13 @@
 const { contextBridge } = require('electron');
-const { winControl } = require('./window-control');
+const { ipcRenderer } = require('electron');
+
+const channel = {
+  winControl: '/wincontrol',
+};
+
+const winControl = (action) => {
+  ipcRenderer.invoke(channel.winControl, action);
+};
 
 contextBridge.exposeInMainWorld('electronAPI', {
   winControl,

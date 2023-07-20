@@ -15,7 +15,8 @@ const createWindow = () => {
       nodeIntegration: false,
       contextIsolation: true,
       preload: path.resolve('src/preload/preload.js'),
-      sandbox: false,
+      //
+      sandbox: true,
     },
   });
 
