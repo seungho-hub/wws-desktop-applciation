@@ -8,5 +8,7 @@
     grid-area: topbar;
     background-color: var(--bg-topBar);
     border-radius: 0 20px 0 0;
+
+    -webkit-app-region: drag;
   }
 </style>
