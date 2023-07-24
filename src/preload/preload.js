@@ -5,10 +5,6 @@ const channel = {
   winControl: '/wincontrol',
 };
 
-const winControl = (action) => {
-  ipcRenderer.invoke(channel.winControl, action);
-};
-
 contextBridge.exposeInMainWorld('electronAPI', {
-  winControl,
+  winControl: (action) => ipcRenderer.invoke(channel.winControl, action),
 });
