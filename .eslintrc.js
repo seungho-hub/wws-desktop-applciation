@@ -16,6 +16,7 @@ module.exports = {
         functions: false,
       },
     ],
+    quotes: ['error', 'single'],
   },
   ignorePatterns: [],
 };
