@@ -5,7 +5,7 @@ const windowWidth = 1280;
 const windowHeight = 904;
 
 const createWindow = () => {
-  const window = new BrowserWindow({
+  const mainWindow = new BrowserWindow({
     width: windowWidth,
     height: windowHeight,
     frame: false,
@@ -15,7 +15,6 @@ const createWindow = () => {
       nodeIntegration: false,
       contextIsolation: true,
       preload: path.resolve('src/preload/preload.js'),
-      //
       sandbox: true,
     },
   });
@@ -23,22 +22,22 @@ const createWindow = () => {
   ipcMain.handle('/wincontrol', (e, action) => {
     switch (action) {
       case 'close':
-        window.close();
+        mainWindow.close();
         break;
       case 'minimize':
-        window.minimize();
+        mainWindow.minimize();
         break;
       case 'maximize':
-        window.maximize();
+        mainWindow.maximize();
         break;
       default:
     }
   });
 
-  window.loadFile(path.resolve('wws-client/public/index.html'));
+  mainWindow.loadFile(path.resolve('wws-client/public/index.html'));
 
-  window.webContents.on('did-finish-load', () => {
-    window.show();
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.show();
   });
 };
 
