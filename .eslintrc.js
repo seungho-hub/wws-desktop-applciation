@@ -17,6 +17,7 @@ module.exports = {
       },
     ],
     quotes: ['error', 'single'],
+    'import/no-extraneous-dependencies': 'off',
   },
   ignorePatterns: [],
 };
