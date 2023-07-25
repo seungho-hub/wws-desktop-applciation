@@ -1,24 +1,9 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, ipcMain } = require('electron');
 const path = require('path');
-
-const windowWidth = 1280;
-const windowHeight = 904;
+const { createMainWindow } = require('./browsers');
 
 const createWindow = () => {
-  const mainWindow = new BrowserWindow({
-    width: windowWidth,
-    height: windowHeight,
-    frame: false,
-    show: false,
-    transparent: true,
-    webPreferences: {
-      nodeIntegration: false,
-      contextIsolation: true,
-      preload: path.resolve('src/preload/preload.js'),
-      sandbox: true,
-    },
-  });
-
+  const mainWindow = createMainWindow();
   ipcMain.handle('/wincontrol', (e, action) => {
     switch (action) {
       case 'close':
