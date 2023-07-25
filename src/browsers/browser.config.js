@@ -7,7 +7,7 @@ const defaultConfig = {
     nodeIntegration: false,
     contextIsolation: true,
     sandbox: true,
-    preload: path.resolve('src/preload/preload.js'),
+    preload: path.join(__dirname, '../preload/preload.js'),
   },
 };
 

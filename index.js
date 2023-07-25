@@ -1,6 +1,6 @@
 const { app, ipcMain } = require('electron');
 const path = require('path');
-const { createMainWindow } = require('./browsers');
+const { createMainWindow } = require('./src/browsers');
 
 const createWindow = () => {
   const mainWindow = createMainWindow();
@@ -19,7 +19,7 @@ const createWindow = () => {
     }
   });
 
-  mainWindow.loadFile(path.resolve('wws-client/public/index.html'));
+  mainWindow.loadFile(path.join(__dirname, 'wws-client/public/index.html'));
 
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.show();
