@@ -10,6 +10,8 @@
     "electron": "^25.1.1"
   },
   "devDependencies": {
-    "eslint": "^8.45.0"
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0"
   }
 }
