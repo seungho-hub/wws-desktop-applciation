@@ -1,5 +1,6 @@
 const { app, ipcMain, dialog } = require('electron');
 const path = require('path');
+const opener = require('opener');
 const { createMainWindow } = require('./src/browsers');
 
 const appProtocol = process.env.NODE_ENV === 'production' ? 'wwsp' : 'wwsp-dev';
@@ -31,7 +32,7 @@ const initialze = () => {
         mainWindow.focus();
       }
 
-      dialog.showErrorBox(`arrived from: ${commandLine.pop()}`);
+      dialog.showErrorBox('got jwt', `url: ${commandLine.pop()}`);
     });
   }
 
@@ -48,6 +49,10 @@ const initialze = () => {
         break;
       default:
     }
+  });
+
+  ipcMain.handle('/login', () => {
+    opener(`http://localhost:8080/auth/signin?redirect_uri=${appProtocol}://`);
   });
 
   mainWindow.loadFile(path.join(__dirname, 'wws-client/public/index.html'));
