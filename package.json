@@ -3,18 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "author" : {
-    "name" : "seungho-hub",
-    "email" : "kmc54320@gmail.com",
-    "url" : "https://github.com/seungho-hub"
+  "author": {
+    "name": "seungho-hub",
+    "email": "kmc54320@gmail.com",
+    "url": "https://github.com/seungho-hub"
   },
   "scripts": {
     "start": "electron .",
-    "build" : "electron-builder build --c ./electron.builder.json",
-    "build:win" : "yarn run build --win"
+    "build": "electron-builder build --c ./electron.builder.json",
+    "build:win": "yarn run build --win"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "electron": "^25.1.1",
     "electron-builder": "^24.6.3",
