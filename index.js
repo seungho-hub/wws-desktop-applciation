@@ -1,9 +1,40 @@
-const { app, ipcMain } = require('electron');
+const { app, ipcMain, dialog } = require('electron');
 const path = require('path');
 const { createMainWindow } = require('./src/browsers');
 
+const appProtocol = process.env.NODE_ENV === 'production' ? 'wwsp' : 'wwsp-dev';
+
 const initialze = () => {
   const mainWindow = createMainWindow();
+
+  if (process.defaultApp) {
+    if (process.argv.length >= 2) {
+      app.setAsDefaultProtocolClient(appProtocol, process.execPath, [
+        path.resolve(process.argv[1]),
+      ]);
+    }
+  } else {
+    app.setAsDefaultProtocolClient(appProtocol);
+  }
+
+  const gotTheLock = app.requestSingleInstanceLock();
+
+  if (!gotTheLock) {
+    app.quit();
+  } else {
+    app.on('second-instance', (event, commandLine) => {
+      if (mainWindow) {
+        if (mainWindow.isMinimized()) {
+          mainWindow.restore();
+        }
+
+        mainWindow.focus();
+      }
+
+      dialog.showErrorBox(`arrived from: ${commandLine.pop()}`);
+    });
+  }
+
   ipcMain.handle('/wincontrol', (e, action) => {
     switch (action) {
       case 'close':
@@ -25,6 +56,10 @@ const initialze = () => {
     mainWindow.show();
   });
 };
+
+app.on('open-url', (event, url) => {
+  dialog.showErrorBox('WelcomBack', 'you arrived from', url);
+});
 
 app.whenReady().then(initialze);
 

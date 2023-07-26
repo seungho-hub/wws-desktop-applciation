@@ -3,9 +3,9 @@
   "asar" : true,
   "productName" : "working with someone",
   "protocols" : {
-    "name" : "wws",
+    "name" : "wwsp",
     "schemes" : [
-      "wws"
+      "wwsp"
     ]
   },
   "directories": {
