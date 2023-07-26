@@ -1,10 +1,17 @@
 {
-  "name": "wws-desktop-app",
+  "name": "working-with-someone",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "index.js",
   "license": "MIT",
+  "author" : {
+    "name" : "seungho-hub",
+    "email" : "kmc54320@gmail.com",
+    "url" : "https://github.com/seungho-hub"
+  },
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build" : "electron-builder build --c ./electron.builder.json",
+    "build:win" : "yarn run build --win"
   },
   "dependencies": {
   },

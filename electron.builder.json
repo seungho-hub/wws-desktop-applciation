@@ -1,0 +1,27 @@
+{
+  "appId": "working.with.someone",
+  "asar" : true,
+  "productName" : "working with someone",
+  "protocols" : {
+    "name" : "wws",
+    "schemes" : [
+      "wws"
+    ]
+  },
+  "directories": {
+    "output": "dist"
+  },
+  "win": {
+    "target": "nsis",
+    "icon" : "resources/favicon.ico"
+  },
+  "nsis" : {
+    "oneClick" : true,
+    "perMachine" : false,
+    "installerIcon" : "resources/favicon.ico",
+    "uninstallerIcon" : "resources/favicon.ico",
+    "installerHeaderIcon" : "resources/seungho-hub.ico",
+    "shortcutName" : "wws"
+  }
+}
+
