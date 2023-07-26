@@ -2,7 +2,7 @@ const { app, ipcMain } = require('electron');
 const path = require('path');
 const { createMainWindow } = require('./src/browsers');
 
-const createWindow = () => {
+const initialze = () => {
   const mainWindow = createMainWindow();
   ipcMain.handle('/wincontrol', (e, action) => {
     switch (action) {
@@ -26,6 +26,6 @@ const createWindow = () => {
   });
 };
 
-app.whenReady().then(createWindow);
+app.whenReady().then(initialze);
 
 app.on('windowcontrol', () => app.quit());
