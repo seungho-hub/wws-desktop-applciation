@@ -5,7 +5,7 @@ const { createMainWindow } = require('./src/browsers');
 
 const appProtocol = process.env.NODE_ENV === 'production' ? 'wwsp' : 'wwsp-dev';
 
-const initialze = () => {
+const initialize = () => {
   const mainWindow = createMainWindow();
 
   if (process.defaultApp) {
@@ -66,6 +66,6 @@ app.on('open-url', (event, url) => {
   dialog.showErrorBox('WelcomBack', 'you arrived from', url);
 });
 
-app.whenReady().then(initialze);
+app.whenReady().then(initialize);
 
 app.on('windowcontrol', () => app.quit());
