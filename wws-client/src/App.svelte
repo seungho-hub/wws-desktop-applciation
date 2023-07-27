@@ -2,6 +2,10 @@
   import SideBar from "./components/sidebar/SideBar.svelte";
   import TopBar from "./components/topbar/TopBar.svelte";
   import Content from "./components/Content.svelte";
+
+  window.electronAPI.onJWT((e, jwt) => {
+    localStorage.setItem("jwt", jwt);
+  });
 </script>
 
 <main>

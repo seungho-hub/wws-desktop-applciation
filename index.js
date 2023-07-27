@@ -32,7 +32,11 @@ const initialize = () => {
         mainWindow.focus();
       }
 
-      dialog.showErrorBox('got jwt', `url: ${commandLine.pop()}`);
+      const url = new URL(commandLine.pop());
+
+      const jwt = url.searchParams.get('jwt');
+
+      mainWindow.webContents.send('/jwt', jwt);
     });
   }
 
