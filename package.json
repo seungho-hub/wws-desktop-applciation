@@ -13,7 +13,9 @@
     "build": "cross-env NODE_ENV=production & electron-builder build --c ./electron.builder.json",
     "build:win": "yarn run build --win"
   },
-  "dependencies": {},
+  "dependencies": {
+    "opener": "^1.5.2"
+  },
   "devDependencies": {
     "cross-env": "^7.0.3",
     "electron": "^25.1.1",
@@ -21,7 +23,6 @@
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "opener": "^1.5.2"
+    "eslint-plugin-import": "^2.27.5"
   }
 }
