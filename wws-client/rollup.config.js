@@ -6,7 +6,16 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import css from 'rollup-plugin-css-only';
 import sveltePreprocess from 'svelte-preprocess';
+import { config } from 'dotenv';
+import replace from '@rollup/plugin-replace';
 
+const envToReplace = {};
+
+const envs = config().parsed;
+
+Object.keys(envs).forEach((key) => {
+  envToReplace[`process.env.${key}`] = `'${envs[key]}'`;
+});
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
@@ -59,6 +68,9 @@ export default {
       browser: true,
       dedupe: ['svelte'],
       exportConditions: ['svelte'],
+    }),
+    replace({
+      values: envToReplace,
     }),
     commonjs(),
 
