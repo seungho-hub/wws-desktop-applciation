@@ -3,6 +3,7 @@
   import TopBar from "./components/topbar/TopBar.svelte";
   import Content from "./components/Content.svelte";
 
+  //로그인 후 main process에서 발급받아 renderer process로 전달한 jwt를 local storage에 저장한다.
   window.electronAPI.onJWT((e, jwt) => {
     localStorage.setItem("jwt", jwt);
   });

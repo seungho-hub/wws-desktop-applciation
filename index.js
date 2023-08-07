@@ -36,6 +36,7 @@ const initialize = () => {
 
       const jwt = url.searchParams.get('jwt');
 
+      // 로그인 성공 후 발급받은 jwt를 renderer process에 전달한다.
       mainWindow.webContents.send('/jwt', jwt);
     });
   }
