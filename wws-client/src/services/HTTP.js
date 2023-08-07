@@ -12,8 +12,6 @@ async function wwsfetch(path, params) {
   }
 
   const res = await fetch(endPoint, {
-    withCredentials: true,
-    credentials: 'include',
     headers: { Authorization: `Bearer ${jwt}` },
   });
 
