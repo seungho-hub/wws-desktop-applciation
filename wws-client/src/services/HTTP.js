@@ -16,9 +16,7 @@ async function wwsfetch(path, params) {
   });
 
   if (res.status === 401) {
-    await window.electronAPI.login();
-
-    return undefined;
+    return window.electronAPI.login();
   }
   const body = await res.json();
 
