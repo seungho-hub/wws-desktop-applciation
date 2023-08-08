@@ -1,10 +1,10 @@
 <script>
   export let day;
-  export let today;
+  export let isToday;
 </script>
 
 {#if day}
-  <card class={today == day ? "dayCard today" : "dayCard"}>
+  <card class={isToday ? "dayCard today" : "dayCard"}>
     <h4>{day}</h4>
   </card>
 {:else}
@@ -12,17 +12,21 @@
 {/if}
 
 <style lang="scss">
+  $today-background-color: var(--sig);
   card {
-    width: 6em;
-    height: 6em;
-    padding: 2em;
+    width: 6.5em;
+    height: 6.5em;
+    padding: 0.5em;
     border-radius: 10px;
 
     &.dayCard {
       border: 1px solid gray;
 
       &.today {
-        background-color: rgb(250, 82, 82);
+        background-color: $today-background-color;
+        h4 {
+          color: var(--font-black);
+        }
       }
     }
     &.emptyCard {

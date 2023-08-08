@@ -1,13 +1,23 @@
 <script>
-  import DayCard from "./DayCard.svelte";
   import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
 
-  export let currentDate;
-  const today = currentDate.day;
+  import DayCard from "./DayCard.svelte";
+  import wwsDate from "../../utils/wwsDate";
+
+  export let targetDate;
+  const currentDate = new wwsDate();
 
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  const isToday = (day) => {
+    return (
+      currentDate.year === targetDate.year &&
+      currentDate.month === targetDate.month &&
+      currentDate.day === day
+    );
+  };
 </script>
 
 <main>
@@ -19,8 +29,8 @@
       <i class="fa-solid fa-caret-left" />
     </button>
     <div class="my">
-      <h2 class="m">{currentDate.monthName}</h2>
-      <h1 class="y">{currentDate.year}</h1>
+      <h2 class="m">{targetDate.monthName}</h2>
+      <h1 class="y">{targetDate.year}</h1>
     </div>
     <button
       class="month-control-btn right"
@@ -37,11 +47,11 @@
       {/each}
     </div>
     <div class="days">
-      {#each Array.from({ length: currentDate.firstDaysOfWeek - 1 }) as i}
+      {#each Array.from({ length: targetDate.firstDaysOfWeek - 1 }) as i}
         <DayCard />
       {/each}
-      {#each Array.from({ length: currentDate.daysInMonth }, (_, i) => i + 1) as day}
-        <DayCard {day} {today} />
+      {#each Array.from({ length: targetDate.daysInMonth }, (_, i) => i + 1) as day}
+        <DayCard {day} isToday={isToday(day)} />
       {/each}
     </div>
   </div>
@@ -74,6 +84,7 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
+        gap: 1em;
       }
     }
     .calendar {

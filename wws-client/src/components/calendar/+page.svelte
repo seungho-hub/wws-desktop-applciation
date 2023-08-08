@@ -1,33 +1,33 @@
 <script>
   import Calendar from "./Calendar.svelte";
   import wwsDate from "../../utils/wwsDate";
-  let currentDate = new wwsDate();
+  let targetDate = new wwsDate();
 
   const nextMonth = () => {
-    if (currentDate.month == 12) {
-      currentDate.year += 1;
-      currentDate.month = 1;
+    if (targetDate.month == 12) {
+      targetDate.year += 1;
+      targetDate.month = 1;
     } else {
-      currentDate.month += 1;
+      targetDate.month += 1;
     }
 
-    currentDate = new wwsDate(currentDate.year, currentDate.month);
+    targetDate = new wwsDate(targetDate.year, targetDate.month);
   };
 
   const prevMonth = () => {
-    if (currentDate.month == 1) {
-      currentDate.year -= 1;
-      currentDate.month = 12;
+    if (targetDate.month == 1) {
+      targetDate.year -= 1;
+      targetDate.month = 12;
     } else {
-      currentDate.month -= 1;
+      targetDate.month -= 1;
     }
 
-    currentDate = new wwsDate(currentDate.year, currentDate.month);
+    targetDate = new wwsDate(targetDate.year, targetDate.month);
   };
 </script>
 
 <main>
-  <Calendar {currentDate} on:nextMonth={nextMonth} on:prevMonth={prevMonth} />
+  <Calendar {targetDate} on:nextMonth={nextMonth} on:prevMonth={prevMonth} />
 </main>
 
 <style lang="scss">
