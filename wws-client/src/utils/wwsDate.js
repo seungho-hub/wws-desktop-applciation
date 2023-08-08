@@ -7,7 +7,7 @@ class wwsDate extends Date {
     this.day = this.getDate();
     this.daysInMonth = new Date(this.year, this.month, 0).getDate();
 
-    this.firstDaysOfWeek = new Date(this.year, this.month - 1, 1).getDay();
+    this.firstDaysOfWeek = new Date(this.year, this.month, 1).getDay();
   }
 }
 
