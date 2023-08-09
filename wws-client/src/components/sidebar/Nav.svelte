@@ -125,12 +125,14 @@
         >
           {@html menu.icon}
         </button>
+        <p>{menu.name}</p>
       </li>
     {/each}
   </ul>
 </nav>
 
 <style lang="scss">
+  $selected-color: #4552b4;
   nav {
     display: flex;
     align-items: start;
@@ -143,9 +145,14 @@
       margin-top: 30px;
       justify-content: space-around;
       .menu-item {
+        height: 80px;
         &.selected {
           button {
-            background-color: #4552b4;
+            background-color: $selected-color;
+          }
+          p {
+            display: block;
+            color: $selected-color;
           }
         }
         button {
@@ -154,8 +161,15 @@
           border-radius: 30px;
 
           &:hover {
-            background-color: #4552b4;
+            background-color: $selected-color;
           }
+        }
+        p {
+          display: none;
+          text-align: center;
+          position: relative;
+          top: 0;
+          left: 0;
         }
       }
     }
