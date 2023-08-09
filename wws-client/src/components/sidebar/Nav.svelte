@@ -165,11 +165,13 @@
           }
         }
         p {
+          margin-top: 0.2em;
           display: none;
           text-align: center;
           position: relative;
           top: 0;
           left: 0;
+          font-size: 0.8em;
         }
       }
     }
