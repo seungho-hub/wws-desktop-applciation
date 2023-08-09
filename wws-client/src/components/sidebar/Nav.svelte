@@ -1,12 +1,11 @@
 <script>
   const iconColor = "#DDDDDD";
-</script>
 
-<nav>
-  <ul class="menus">
-    <li class="menu-item">
-      <button>
-        <svg
+  const menus = [
+    {
+      name: "home",
+      url: "#/",
+      icon: `<svg
           width="42px"
           height="42px"
           stroke-width="2"
@@ -16,17 +15,18 @@
           color="#000000"
           ><path
             d="M9 21H7a4 4 0 01-4-4v-6.292a4 4 0 011.927-3.421l5-3.03a4 4 0 014.146 0l5 3.03A4 4 0 0121 10.707V17a4 4 0 01-4 4h-2m-6 0v-4a3 3 0 013-3v0a3 3 0 013 3v4m-6 0h6"
-            stroke={iconColor}
+            stroke=${iconColor}
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
           /></svg
-        >
-      </button>
-    </li>
-    <li class="menu-item">
-      <button>
-        <svg
+        >`,
+      selected: true,
+    },
+    {
+      name: "wws",
+      url: "#/wws",
+      icon: `<svg
           width="42px"
           height="42px"
           stroke-width="2"
@@ -36,28 +36,29 @@
           color="#000000"
           ><path
             d="M3 16V8a5 5 0 015-5h8a5 5 0 015 5v8a5 5 0 01-5 5H8a5 5 0 01-5-5z"
-            stroke={iconColor}
+            stroke=${iconColor}
             stroke-width="2"
           /><path
             d="M16.5 14.5s-1.5 2-4.5 2-4.5-2-4.5-2"
-            stroke={iconColor}
+            stroke=${iconColor}
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
           /><path
             d="M8.5 10a.5.5 0 110-1 .5.5 0 010 1zM15.5 10a.5.5 0 110-1 .5.5 0 010 1z"
             fill="#000000"
-            stroke={iconColor}
+            stroke=${iconColor}
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
           /></svg
-        >
-      </button>
-    </li>
-    <li class="menu-item">
-      <button>
-        <svg
+        >`,
+      selected: false,
+    },
+    {
+      name: "calendar",
+      url: "#/calendar",
+      icon: `<svg
           width="42px"
           height="42px"
           stroke-width="2"
@@ -67,17 +68,18 @@
           color="#000000"
           ><path
             d="M15 4V2m0 2v2m0-2h-4.5M3 10v9a2 2 0 002 2h14a2 2 0 002-2v-9H3zM3 10V6a2 2 0 012-2h2M7 2v4M21 10V6a2 2 0 00-2-2h-.5"
-            stroke={iconColor}
+            stroke=${iconColor}
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
           /></svg
-        >
-      </button>
-    </li>
-    <li class="menu-item">
-      <button>
-        <svg
+        >`,
+      selected: false,
+    },
+    {
+      name: "someone",
+      url: "#/someone",
+      icon: `<svg
           width="42px"
           height="42px"
           stroke-width="2"
@@ -87,24 +89,44 @@
           color="#000000"
           ><path
             d="M1 20v-1a7 7 0 017-7v0a7 7 0 017 7v1"
-            stroke={iconColor}
+            stroke=${iconColor}
             stroke-width="2"
             stroke-linecap="round"
           /><path
             d="M13 14v0a5 5 0 015-5v0a5 5 0 015 5v.5"
-            stroke={iconColor}
+            stroke=${iconColor}
             stroke-width="2"
             stroke-linecap="round"
           /><path
             d="M8 12a4 4 0 100-8 4 4 0 000 8zM18 9a3 3 0 100-6 3 3 0 000 6z"
-            stroke={iconColor}
+            stroke=${iconColor}
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
           /></svg
+        >`,
+      selected: false,
+    },
+  ];
+</script>
+
+<nav>
+  <ul class="menus">
+    {#each menus as menu}
+      <li class="menu-item {menu.name} {menu.selected ? 'selected' : ''}">
+        <button
+          on:click={() => {
+            menus.forEach((menu) => {
+              menu.selected = false;
+            });
+            window.location.href = menu.url;
+            menu.selected = true;
+          }}
         >
-      </button>
-    </li>
+          {@html menu.icon}
+        </button>
+      </li>
+    {/each}
   </ul>
 </nav>
 
@@ -121,6 +143,11 @@
       margin-top: 30px;
       justify-content: space-around;
       .menu-item {
+        &.selected {
+          button {
+            background-color: #4552b4;
+          }
+        }
         button {
           width: 60px;
           height: 60px;
@@ -128,9 +155,6 @@
 
           &:hover {
             background-color: #4552b4;
-          }
-
-          svg {
           }
         }
       }
