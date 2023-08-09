@@ -9,7 +9,7 @@
   export let targetDate;
   const currentDate = new wwsDate();
 
-  const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   const isToday = (day) => {
     return (
@@ -47,7 +47,7 @@
       {/each}
     </div>
     <div class="days">
-      {#each Array.from({ length: targetDate.firstDaysOfWeek - 1 }) as i}
+      {#each Array.from({ length: targetDate.firstDaysOfWeek }) as i}
         <DayCard />
       {/each}
       {#each Array.from({ length: targetDate.daysInMonth }, (_, i) => i + 1) as day}
