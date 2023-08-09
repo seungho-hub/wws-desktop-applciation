@@ -93,6 +93,7 @@
       .days-of-week {
         display: grid;
         grid-template-columns: repeat(7, 6.5em);
+        gap: 0.5em;
 
         p {
           text-align: center;
