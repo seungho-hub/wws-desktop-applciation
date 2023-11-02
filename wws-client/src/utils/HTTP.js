@@ -23,6 +23,4 @@ async function wwsfetch(path, params) {
   return body;
 }
 
-module.exports = {
-  wwsfetch,
-};
+export default wwsfetch;
